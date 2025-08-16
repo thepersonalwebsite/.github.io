@@ -3,50 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <title>Joshua Mark Daniels</title>
-  <!-- Standard viewport; we’ll handle rigidity via scaling, not by forcing a wide viewport -->
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    /* Prevent iOS from auto-bumping font sizes */
-    html { -webkit-text-size-adjust: 100%; }
-
-    :root {
-      /* Your designed card width (content + padding + borders) */
-      --card-content-width: 650;   /* .container width */
-      --card-padding-x: 40;        /* left/right padding each */
-      --card-border: 1;            /* left/right border each */
-      /* total rendered width in px = 650 + 40*2 + 1*2 = 732 */
-      --card-total-width: calc(var(--card-content-width) + (var(--card-padding-x) * 2) + (var(--card-border) * 2));
-    }
-
-    /* Stage centers the scaled card and prevents scrollbars */
     body {
+      font-family: Georgia, "Times New Roman", serif;
       margin: 0;
       background: #fff;
       color: #000;
-      font-family: Georgia, "Times New Roman", serif;
-      display: grid;
-      place-items: center;
-      min-height: 100dvh; /* dynamic viewport accounts for iOS browser chrome */
-      overflow: hidden;   /* avoid sideways scroll during scale */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 16px; /* breathing room on small screens */
     }
 
-    /* The scaler keeps your layout rigid but fits it to small screens */
-    .scaler {
-      /* scale factor = min(1, viewport width / designed width) */
-      --scale: min(1, calc(100dvw / var(--card-total-width)));
-      transform: scale(var(--scale));
-      transform-origin: top center;
-      /* Reserve layout space so the scaled card is centered and clickable */
-      width: calc(var(--card-total-width) * var(--scale));
-      /* Make sure the whole card is visible vertically */
-      max-height: 100dvh;
-      display: grid;
-      place-items: center;
-    }
-
-    /* Your original card — unchanged except we keep fixed widths */
+    /* ====== Desktop (your original look) ====== */
     .container {
-      width: calc(var(--card-content-width) * 1px);
+      width: 650px;
       padding: 40px;
       border: 1px solid #000;
       display: flex;
@@ -55,14 +28,13 @@
       box-sizing: border-box;
       background: #fff;
     }
-
     .left { width: 400px; }
     .left h1 {
       font-size: 22px;
       margin-bottom: 10px;
       border-bottom: 1px solid #000;
       padding-bottom: 10px;
-      white-space: nowrap; /* keep on one line */
+      white-space: nowrap;
     }
     .left .subtitle {
       font-style: italic;
@@ -97,33 +69,70 @@
       color: #333;
       overflow: hidden;
     }
-    /* If you add a real headshot, it will fill nicely */
     .photo-placeholder img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
+
+    /* ====== Mobile breakpoint ====== */
+    @media (max-width: 740px) {
+      body {
+        align-items: flex-start;   /* avoid vertical clipping under browser bars */
+        min-height: 100dvh;
+      }
+      .container {
+        width: 100%;
+        max-width: 600px;          /* keeps it classy on big phones */
+        padding: 24px;
+        gap: 24px;
+        flex-direction: column;    /* stack so nothing gets cut off */
+      }
+      .left, .right { width: 100%; }
+
+      .left h1 {
+        font-size: 20px;
+        margin-bottom: 8px;
+        padding-bottom: 8px;
+      }
+      .left .subtitle {
+        font-size: 15px;
+        margin-bottom: 28px;
+      }
+      .left nav a {
+        font-size: 16px;
+        margin-bottom: 10px;
+      }
+
+      /* Photo fills width with same tall feel (approx 7:9 ratio) */
+      .photo-placeholder {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 7 / 9;
+        font-size: 13px;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="scaler">
-    <div class="container">
-      <div class="left">
-        <h1>Joshua Mark Daniels</h1>
-        <div class="subtitle">Harvard student chasing meaningful impact.</div>
-        <nav>
-          <a href="/resume.pdf">Curriculum Vitae</a>
-          <a href="mailto:hello@joshuadaniels.com">Contact</a>
-          <a href="/media">Media</a>
-        </nav>
-      </div>
-      <div class="right">
-        <div class="photo-placeholder">
-          <!-- Replace with your actual headshot when ready -->
-          <!-- <img src="/headshot.jpg" alt="Joshua Daniels"> -->
-          Professional Photo<br>(Placeholder)
-        </div>
+  <div class="container">
+    <div class="left">
+      <h1>Joshua Mark Daniels</h1>
+      <div class="subtitle">Harvard student chasing meaningful impact.</div>
+      <nav>
+        <a href="/resume.pdf">Curriculum Vitae</a>
+        <a href="realjoshuadaniels@gmail.com">Contact</a>
+        <a href="/media">Media</a>
+      </nav>
+    </div>
+
+    <div class="right">
+      <div class="photo-placeholder">
+        <!-- Replace when ready:
+        <img src="/headshot.jpg" alt="Joshua Daniels">
+        -->
+        Professional Photo<br>(Placeholder)
       </div>
     </div>
   </div>
