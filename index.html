@@ -1,141 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <title>Joshua Mark Daniels</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Canonical host (www) -->
+  <link rel="canonical" href="https://www.joshuadaniels.com/" />
+
+  <meta name="description" content="Joshua Mark Daniels — student at Harvard College interested in economics, applied math, statistics, physics, computer science, as well as polo, rowing, chess, and politics. Curriculum vitae, media, and contact information.">
+
+  <!-- Social preview (optional image lines are commented out) -->
+  <meta property="og:title" content="Joshua Mark Daniels">
+  <meta property="og:description" content="Student at Harvard College interested in economics, applied math, statistics, physics, and computer science.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.joshuadaniels.com/">
+  <!-- <meta property="og:image" content="https://www.joshuadaniels.com/preview.jpg"> -->
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Joshua Mark Daniels">
+  <meta name="twitter:description" content="Student at Harvard College interested in economics, applied math, statistics, physics, and computer science.">
+  <!-- <meta name="twitter:image" content="https://www.joshuadaniels.com/preview.jpg"> -->
+
+  <!-- JSON-LD (matches canonical host) -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Person",
     "name": "Joshua Mark Daniels",
-    "affiliation": {
-      "@type": "CollegeOrUniversity",
-      "name": "Harvard University"
-    },
-    "url": "https://joshuadaniels.com",
-    "sameAs": [
-      "https://www.instagram.com/realjoshuadaniels/"
-    ]
+    "affiliation": { "@type": "CollegeOrUniversity", "name": "Harvard University" },
+    "url": "https://www.joshuadaniels.com/",
+    "sameAs": ["https://www.instagram.com/realjoshuadaniels/"]
   }
   </script>
 
-  <meta name="description" content="Joshua Mark Daniels — Student at Harvard college interested in Economics, applied math, statistics, physics, computor science, as well as polo, rowing, chess, and politics. Curriculum Vitae, media, and contact information.">
-  <meta name="keywords" content="Joshua Daniels, Josh Daniels, Josh,
-  Joshua Daniels Harvard, Josh Daniels Harvard, Josh Harvard,
-  Joshua Daniels Harvard polo, Josh Daniels Harvard polo, Josh Harvard polo,
-  Joshua Daniels Harvard rowing, Josh Daniels Harvard rowing, Josh Harvard rowing,
-  Joshua Daniels Harvard Georgia, Josh Daniels Harvard Georgia, Josh Harvard Georgia,
-  Joshua Daniels Harvard student, Josh Daniels Harvard student, Josh Harvard student,
-  Joshua Daniels Harvard 2029, Josh Daniels Harvard 2029, Josh Harvard 2029">
-  <meta charset="UTF-8" />
-  <title>Joshua Mark Daniels</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
     body {
       font-family: Georgia, "Times New Roman", serif;
-      margin: 0;
-      background: #fff;
-      color: #000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 16px; /* breathing room on small screens */
+      margin: 0; background: #fff; color: #000;
+      display: flex; justify-content: center; align-items: center;
+      min-height: 100vh; padding: 16px;
     }
-
-    /* ====== Desktop (your original look) ====== */
-    .container {
-      width: 650px;
-      padding: 40px;
-      border: 1px solid #000;
-      display: flex;
-      flex-direction: row;
-      gap: 40px;
-      box-sizing: border-box;
-      background: #fff;
-    }
+    .container { width: 650px; padding: 40px; border: 1px solid #000;
+      display: flex; gap: 40px; background: #fff; box-sizing: border-box; }
     .left { width: 400px; }
-    .left h1 {
-      font-size: 22px;
-      margin-bottom: 10px;
-      border-bottom: 1px solid #000;
-      padding-bottom: 10px;
-      white-space: nowrap;
-    }
-    .left .subtitle {
-      font-style: italic;
-      font-size: 16px;
-      margin-bottom: 60px;
-    }
-    .left nav a {
-      display: block;
-      font-size: 16px;
-      margin-bottom: 12px;
-      text-decoration: underline dotted;
-      color: #000;
-    }
-    .left nav a:hover { text-decoration: underline; }
-
-    .right {
-      width: 400px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .photo-placeholder {
-      width: 280px;
-      height: 360px;
-      background: #ddd;
-      border: 1px solid #000;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 14px;
-      font-style: italic;
-      color: #333;
-      overflow: hidden;
-    }
-    .photo-placeholder img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-
-    /* ====== Mobile breakpoint ====== */
+    .left h1 { font-size: 22px; margin-bottom: 10px; border-bottom: 1px solid #000; padding-bottom: 10px; white-space: nowrap; }
+    .left .subtitle { font-style: italic; font-size: 16px; margin-bottom: 60px; }
+    .nav-item { display: block; font-size: 16px; margin-bottom: 12px; text-decoration: underline dotted; color: #000; cursor: not-allowed; opacity: 0.85; }
+    .nav-item:hover { text-decoration: underline; }
+    .right { width: 400px; display: flex; justify-content: center; align-items: center; }
+    .photo-placeholder { width: 280px; height: 360px; background: #ddd; border: 1px solid #000;
+      display: flex; justify-content: center; align-items: center; font-size: 14px; font-style: italic; color: #333; overflow: hidden; }
+    .photo-placeholder img { width: 100%; height: 100%; object-fit: cover; display: block; }
     @media (max-width: 740px) {
-      body {
-        align-items: flex-start;   /* avoid vertical clipping under browser bars */
-        min-height: 100dvh;
-      }
-      .container {
-        width: 100%;
-        max-width: 600px;          /* keeps it classy on big phones */
-        padding: 24px;
-        gap: 24px;
-        flex-direction: column;    /* stack so nothing gets cut off */
-      }
+      body { align-items: flex-start; min-height: 100dvh; }
+      .container { width: 100%; max-width: 600px; padding: 24px; gap: 24px; flex-direction: column; }
       .left, .right { width: 100%; }
-
-      .left h1 {
-        font-size: 20px;
-        margin-bottom: 8px;
-        padding-bottom: 8px;
-      }
-      .left .subtitle {
-        font-size: 15px;
-        margin-bottom: 28px;
-      }
-      .left nav a {
-        font-size: 16px;
-        margin-bottom: 10px;
-      }
-
-      /* Photo fills width with same tall feel (approx 7:9 ratio) */
-      .photo-placeholder {
-        width: 100%;
-        height: auto;
-        aspect-ratio: 7 / 9;
-        font-size: 13px;
-      }
+      .left h1 { font-size: 20px; margin-bottom: 8px; padding-bottom: 8px; }
+      .left .subtitle { font-size: 15px; margin-bottom: 28px; }
+      .nav-item { font-size: 16px; margin-bottom: 10px; }
+      .photo-placeholder { width: 100%; height: auto; aspect-ratio: 7 / 9; font-size: 13px; }
     }
   </style>
 </head>
@@ -144,18 +68,16 @@
     <div class="left">
       <h1>Joshua Mark Daniels</h1>
       <div class="subtitle">Harvard student chasing meaningful impact.</div>
-      <nav>
-        <a href="#" class="disabled">Curriculum Vitae</a>
-        <a href="#" class="disabled">Contact</a>                             
-        <a href="#" class="disabled">Media</a>
-      </nav>
+
+      <!-- Replace these with real <a href="..."> links once pages exist -->
+      <span class="nav-item" role="link" aria-disabled="true" tabindex="-1">Curriculum Vitae</span>
+      <span class="nav-item" role="link" aria-disabled="true" tabindex="-1">Contact</span>
+      <span class="nav-item" role="link" aria-disabled="true" tabindex="-1">Media</span>
     </div>
 
     <div class="right">
-      <div class="photo-placeholder">
-        <!-- Replace when ready:
-        <img src="/headshot.jpg" alt="Joshua Daniels">
-        -->
+      <div class="photo-placeholder" aria-label="Professional headshot placeholder">
+        <!-- <img src="https://www.joshuadaniels.com/headshot.jpg" alt="Joshua Daniels"> -->
         Professional Photo<br>(Placeholder)
       </div>
     </div>
