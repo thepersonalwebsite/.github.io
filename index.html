@@ -10,19 +10,20 @@
 
   <meta name="description" content="Joshua Mark Daniels — student at Harvard College interested in economics, applied math, statistics, physics, computer science, as well as polo, rowing, chess, and politics. Curriculum vitae, media, and contact information.">
 
-  <!-- Social preview (optional image lines are commented out) -->
+  <!-- Social preview -->
   <meta property="og:title" content="Joshua Mark Daniels">
   <meta property="og:description" content="Student at Harvard College interested in economics, applied math, statistics, physics, and computer science.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.joshuadaniels.com/">
-  <!-- <meta property="og:image" content="https://www.joshuadaniels.com/preview.jpg"> -->
+  <!-- Optional: set to your headshot or a banner -->
+  <!-- <meta property="og:image" content="https://www.joshuadaniels.com/media/headshot.jpg"> -->
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Joshua Mark Daniels">
   <meta name="twitter:description" content="Student at Harvard College interested in economics, applied math, statistics, physics, and computer science.">
-  <!-- <meta name="twitter:image" content="https://www.joshuadaniels.com/preview.jpg"> -->
+  <!-- <meta name="twitter:image" content="https://www.joshuadaniels.com/media/headshot.jpg"> -->
 
-  <!-- JSON-LD (matches canonical host) -->
+  <!-- JSON-LD -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -35,23 +36,61 @@
   </script>
 
   <style>
+    :root {
+      --border:#000; --ink:#000; --muted:#333; --back:#fff; --shade:#ddd;
+      --overlay: rgba(0,0,0,0.85);
+    }
+    * { box-sizing: border-box; }
     body {
       font-family: Georgia, "Times New Roman", serif;
-      margin: 0; background: #fff; color: #000;
+      margin: 0; background: var(--back); color: var(--ink);
       display: flex; justify-content: center; align-items: center;
       min-height: 100vh; padding: 16px;
     }
-    .container { width: 650px; padding: 40px; border: 1px solid #000;
-      display: flex; gap: 40px; background: #fff; box-sizing: border-box; }
+    .container { width: 650px; padding: 40px; border: 1px solid var(--border);
+      display: flex; gap: 40px; background: var(--back); }
     .left { width: 400px; }
-    .left h1 { font-size: 22px; margin-bottom: 10px; border-bottom: 1px solid #000; padding-bottom: 10px; white-space: nowrap; }
+    .left h1 { font-size: 22px; margin-bottom: 10px; border-bottom: 1px solid var(--border); padding-bottom: 10px; white-space: nowrap; }
     .left .subtitle { font-style: italic; font-size: 16px; margin-bottom: 60px; }
-    .nav-item { display: block; font-size: 16px; margin-bottom: 12px; text-decoration: underline dotted; color: #000; cursor: not-allowed; opacity: 0.85; }
+    .nav-item { display: block; font-size: 16px; margin-bottom: 12px; text-decoration: underline dotted; color: var(--ink); opacity: 0.85; }
     .nav-item:hover { text-decoration: underline; }
+    .nav-item[aria-disabled="true"] { cursor: not-allowed; }
+    .nav-item.button { cursor: pointer; opacity: 1; }
+
     .right { width: 400px; display: flex; justify-content: center; align-items: center; }
-    .photo-placeholder { width: 280px; height: 360px; background: #ddd; border: 1px solid #000;
-      display: flex; justify-content: center; align-items: center; font-size: 14px; font-style: italic; color: #333; overflow: hidden; }
-    .photo-placeholder img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .photo-placeholder, .photo-frame {
+      width: 280px; height: 360px; background: var(--shade); border: 1px solid var(--border);
+      display: flex; justify-content: center; align-items: center; font-size: 14px; font-style: italic; color: var(--muted); overflow: hidden;
+    }
+    .photo-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* Lightbox */
+    .lightbox {
+      position: fixed; inset: 0; background: var(--overlay);
+      display: none; align-items: center; justify-content: center; z-index: 9999;
+    }
+    .lightbox[aria-hidden="false"] { display: flex; }
+    .lightbox__wrap {
+      position: relative; max-width: 92vw; max-height: 92vh; outline: none;
+    }
+    .lightbox__img {
+      max-width: 92vw; max-height: 92vh; display: block; margin: 0 auto; border: 1px solid #444; background:#111;
+    }
+    .lightbox__close, .lightbox__prev, .lightbox__next {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      border: 1px solid #888; background: rgba(255,255,255,0.08); color: #fff;
+      padding: 10px 14px; font-size: 18px; cursor: pointer; user-select: none;
+      backdrop-filter: blur(2px);
+    }
+    .lightbox__close { top: 8px; right: 8px; transform: none; border-radius: 6px; }
+    .lightbox__prev { left: -54px; border-radius: 8px; }
+    .lightbox__next { right: -54px; border-radius: 8px; }
+    .lightbox__caption {
+      text-align: center; color: #ddd; margin-top: 10px; font-size: 14px;
+    }
+    .lightbox__counter {
+      position: absolute; bottom: -26px; right: 0; color:#bbb; font-size: 12px;
+    }
     @media (max-width: 740px) {
       body { align-items: flex-start; min-height: 100dvh; }
       .container { width: 100%; max-width: 600px; padding: 24px; gap: 24px; flex-direction: column; }
@@ -59,8 +98,12 @@
       .left h1 { font-size: 20px; margin-bottom: 8px; padding-bottom: 8px; }
       .left .subtitle { font-size: 15px; margin-bottom: 28px; }
       .nav-item { font-size: 16px; margin-bottom: 10px; }
-      .photo-placeholder { width: 100%; height: auto; aspect-ratio: 7 / 9; font-size: 13px; }
+      .photo-placeholder, .photo-frame { width: 100%; height: auto; aspect-ratio: 7 / 9; font-size: 13px; }
+      .lightbox__prev { left: 4px; }
+      .lightbox__next { right: 4px; }
     }
+    /* Improve focus visibility */
+    .nav-item.button:focus, .lightbox__close:focus, .lightbox__prev:focus, .lightbox__next:focus { outline: 2px solid #fff; outline-offset: 2px; }
   </style>
 </head>
 <body>
@@ -69,18 +112,139 @@
       <h1>Joshua Mark Daniels</h1>
       <div class="subtitle">Harvard student chasing meaningful impact.</div>
 
-      <!-- Replace these with real <a href="..."> links once pages exist -->
+      <!-- Keep these disabled until pages exist -->
       <span class="nav-item" role="link" aria-disabled="true" tabindex="-1">Curriculum Vitae</span>
       <span class="nav-item" role="link" aria-disabled="true" tabindex="-1">Contact</span>
-      <span class="nav-item" role="link" aria-disabled="true" tabindex="-1">Media</span>
+
+      <!-- Media is now a working button -->
+      <button id="mediaBtn" class="nav-item button" aria-haspopup="dialog" aria-controls="lightbox" aria-label="Open media gallery">
+        Media
+      </button>
     </div>
 
     <div class="right">
-      <div class="photo-placeholder" aria-label="Professional headshot placeholder">
-        <!-- <img src="https://www.joshuadaniels.com/headshot.jpg" alt="Joshua Daniels"> -->
-        Professional Photo<br>(Placeholder)
-      </div>
+      <!-- Replace placeholder with your headshot -->
+      <figure class="photo-frame" aria-label="Professional headshot of Joshua Daniels">
+        <img id="profilePhoto" src="media/headshot.jpg" alt="Joshua Daniels headshot">
+      </figure>
     </div>
   </div>
+
+  <!-- Lightbox / Image Viewer -->
+  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Image viewer">
+    <div class="lightbox__wrap" tabindex="-1">
+      <img id="lightboxImg" class="lightbox__img" alt="">
+      <div class="lightbox__caption" id="lightboxCaption"></div>
+      <div class="lightbox__counter" id="lightboxCounter"></div>
+      <button class="lightbox__close" id="lightboxClose" aria-label="Close (Esc)">✕</button>
+      <button class="lightbox__prev" id="lightboxPrev" aria-label="Previous image">◀</button>
+      <button class="lightbox__next" id="lightboxNext" aria-label="Next image">▶</button>
+    </div>
+  </div>
+
+  <script>
+    // 1) LIST YOUR PHOTOS HERE
+    // Put files in /media and list them below. Captions are optional.
+    const GALLERY = [
+      { src: "media/photo1.jpg", alt: "Rowing on the Charles", caption: "Practice on the Charles" },
+      { src: "media/photo2.jpg", alt: "At the boathouse", caption: "Boathouse" },
+      { src: "media/photo3.jpg", alt: "Harvard Yard", caption: "Harvard Yard" }
+    ];
+
+    // --- Lightbox logic (no dependencies) ---
+    const els = {
+      btn: document.getElementById('mediaBtn'),
+      root: document.getElementById('lightbox'),
+      wrap: document.querySelector('.lightbox__wrap'),
+      img: document.getElementById('lightboxImg'),
+      caption: document.getElementById('lightboxCaption'),
+      counter: document.getElementById('lightboxCounter'),
+      close: document.getElementById('lightboxClose'),
+      prev: document.getElementById('lightboxPrev'),
+      next: document.getElementById('lightboxNext')
+    };
+
+    let index = 0;
+    let lastActive = null;
+
+    function clamp(i) {
+      const n = GALLERY.length;
+      return ((i % n) + n) % n;
+    }
+
+    function show(i) {
+      if (!GALLERY.length) return;
+      index = clamp(i);
+      const { src, alt, caption } = GALLERY[index];
+      els.img.src = src;
+      els.img.alt = alt || "";
+      els.caption.textContent = caption || "";
+      els.counter.textContent = `${index + 1} / ${GALLERY.length}`;
+    }
+
+    function openLightbox(startIndex = 0) {
+      if (!GALLERY.length) {
+        alert("No photos yet. Add images to the GALLERY array in the HTML.");
+        return;
+      }
+      lastActive = document.activeElement;
+      els.root.setAttribute('aria-hidden', 'false');
+      show(startIndex);
+      // Preload neighbors for snappier arrows
+      const next = new Image(); next.src = GALLERY[clamp(startIndex+1)].src;
+      const prev = new Image(); prev.src = GALLERY[clamp(startIndex-1)].src;
+      // Focus the wrap for keyboard handling
+      els.wrap.focus();
+      // Prevent background scroll
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+      els.root.setAttribute('aria-hidden', 'true');
+      els.img.removeAttribute('src');
+      document.body.style.overflow = '';
+      if (lastActive && typeof lastActive.focus === 'function') lastActive.focus();
+    }
+
+    function next() { show(index + 1); }
+    function prev() { show(index - 1); }
+
+    // Click handlers
+    els.btn.addEventListener('click', () => openLightbox(0));
+    els.close.addEventListener('click', closeLightbox);
+    els.next.addEventListener('click', next);
+    els.prev.addEventListener('click', prev);
+
+    // Click outside image closes
+    els.root.addEventListener('click', (e) => {
+      const clickedOutside = !e.target.closest('.lightbox__wrap');
+      if (clickedOutside) closeLightbox();
+    });
+
+    // Keyboard support
+    function onKey(e) {
+      if (els.root.getAttribute('aria-hidden') === 'true') return;
+      if (e.key === 'Escape') { e.preventDefault(); closeLightbox(); }
+      else if (e.key === 'ArrowRight') { e.preventDefault(); next(); }
+      else if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); }
+    }
+    document.addEventListener('keydown', onKey);
+
+    // Basic swipe for touch
+    let startX = null;
+    els.wrap.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; }, {passive:true});
+    els.wrap.addEventListener('touchend', (e) => {
+      if (startX === null) return;
+      const dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 40) (dx < 0 ? next : prev)();
+      startX = null;
+    });
+
+    // Optional: open a specific image by URL hash (#media-3 opens the 3rd)
+    window.addEventListener('hashchange', () => {
+      const m = location.hash.match(/^#media-(\d+)$/);
+      if (m) openLightbox(parseInt(m[1],10)-1);
+    });
+  </script>
 </body>
 </html>
