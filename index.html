@@ -15,7 +15,6 @@
   <meta property="og:description" content="Student at Harvard College interested in economics, applied math, statistics, physics, and computer science.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.joshuadaniels.com/">
-  <!-- Optional: set to your headshot or a banner -->
   <!-- <meta property="og:image" content="https://www.joshuadaniels.com/media/headshot.jpg"> -->
 
   <meta name="twitter:card" content="summary_large_image">
@@ -55,7 +54,22 @@
     .nav-item { display: block; font-size: 16px; margin-bottom: 12px; text-decoration: underline dotted; color: var(--ink); opacity: 0.85; }
     .nav-item:hover { text-decoration: underline; }
     .nav-item[aria-disabled="true"] { cursor: not-allowed; }
-    .nav-item.button { cursor: pointer; opacity: 1; }
+
+    /* Make the Media button look like a plain text link (no grey rectangle) */
+    .nav-item.button{
+      cursor: pointer;
+      opacity: 1;
+      background: none;
+      border: 0;
+      padding: 0;
+      margin: 0;
+      text-align: left;
+      color: inherit;
+      font: inherit;
+      border-radius: 0;
+      -webkit-appearance: none;
+      appearance: none;
+    }
 
     .right { width: 400px; display: flex; justify-content: center; align-items: center; }
     .photo-placeholder, .photo-frame {
@@ -102,7 +116,7 @@
       .lightbox__prev { left: 4px; }
       .lightbox__next { right: 4px; }
     }
-    /* Improve focus visibility */
+    /* Focus styles */
     .nav-item.button:focus, .lightbox__close:focus, .lightbox__prev:focus, .lightbox__next:focus { outline: 2px solid #fff; outline-offset: 2px; }
   </style>
 </head>
@@ -117,7 +131,7 @@
       <span class="nav-item" role="link" aria-disabled="true" tabindex="-1">Contact</span>
 
       <!-- Media is now a working button -->
-      <button id="mediaBtn" class="nav-item button" aria-haspopup="dialog" aria-controls="lightbox" aria-label="Open media gallery">
+      <button type="button" id="mediaBtn" class="nav-item button" aria-haspopup="dialog" aria-controls="lightbox" aria-label="Open media gallery">
         Media
       </button>
     </div>
@@ -151,7 +165,7 @@
       { src: "media/photo3.jpg", alt: "Out of Focus", caption: "Out of Focus" },
       { src: "media/photo4.jpg", alt: "Polo", caption: "Polo" },
       { src: "media/photo5.jpg", alt: "Rowing", caption: "Rowing" },
-      { src: "media/photo6.jpg", alt: "Golf", caption: "Golf" },
+      { src: "media/photo6.jpg", alt: "Golf", caption: "Golf" }
     ];
 
     // --- Lightbox logic (no dependencies) ---
@@ -193,12 +207,10 @@
       lastActive = document.activeElement;
       els.root.setAttribute('aria-hidden', 'false');
       show(startIndex);
-      // Preload neighbors for snappier arrows
+      // Preload neighbors
       const next = new Image(); next.src = GALLERY[clamp(startIndex+1)].src;
       const prev = new Image(); prev.src = GALLERY[clamp(startIndex-1)].src;
-      // Focus the wrap for keyboard handling
       els.wrap.focus();
-      // Prevent background scroll
       document.body.style.overflow = 'hidden';
     }
 
@@ -209,14 +221,14 @@
       if (lastActive && typeof lastActive.focus === 'function') lastActive.focus();
     }
 
-    function next() { show(index + 1); }
-    function prev() { show(index - 1); }
+    function nextImg() { show(index + 1); }
+    function prevImg() { show(index - 1); }
 
     // Click handlers
     els.btn.addEventListener('click', () => openLightbox(0));
     els.close.addEventListener('click', closeLightbox);
-    els.next.addEventListener('click', next);
-    els.prev.addEventListener('click', prev);
+    els.next.addEventListener('click', nextImg);
+    els.prev.addEventListener('click', prevImg);
 
     // Click outside image closes
     els.root.addEventListener('click', (e) => {
@@ -228,8 +240,8 @@
     function onKey(e) {
       if (els.root.getAttribute('aria-hidden') === 'true') return;
       if (e.key === 'Escape') { e.preventDefault(); closeLightbox(); }
-      else if (e.key === 'ArrowRight') { e.preventDefault(); next(); }
-      else if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); }
+      else if (e.key === 'ArrowRight') { e.preventDefault(); nextImg(); }
+      else if (e.key === 'ArrowLeft') { e.preventDefault(); prevImg(); }
     }
     document.addEventListener('keydown', onKey);
 
@@ -239,7 +251,7 @@
     els.wrap.addEventListener('touchend', (e) => {
       if (startX === null) return;
       const dx = e.changedTouches[0].clientX - startX;
-      if (Math.abs(dx) > 40) (dx < 0 ? next : prev)();
+      if (Math.abs(dx) > 40) (dx < 0 ? nextImg : prevImg)();
       startX = null;
     });
 
