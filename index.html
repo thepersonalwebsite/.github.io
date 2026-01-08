@@ -121,7 +121,7 @@
       <span class="nav-item" role="link" aria-disabled="true" tabindex="-1">Contact</span>
 
       <!-- Media uses an anchor for best underline support on iPhone -->
-      <a id="mediaLink" class="nav-item" href="#media-1" aria-label="Open media gallery">Media</a>
+      <span class="nav-item" role="link" aria-disabled="true" tabindex="-1">Media</span>
     </div>
 
     <div class="right">
@@ -156,7 +156,7 @@
 
     // --- Lightbox logic (no dependencies) ---
     const els = {
-      link: document.getElementById('mediaLink'),
+      
       root: document.getElementById('lightbox'),
       wrap: document.querySelector('.lightbox__wrap'),
       img: document.getElementById('lightboxImg'),
@@ -218,11 +218,6 @@
     function prevImg() { show(index - 1); }
 
     // Click handlers
-    els.link.addEventListener('click', (e) => {
-      e.preventDefault(); // open via JS for instant response
-      if (location.hash !== '#media-1') history.pushState(null, '', '#media-1');
-      openLightbox(0);
-    });
     document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
     document.getElementById('lightboxNext').addEventListener('click', nextImg);
     document.getElementById('lightboxPrev').addEventListener('click', prevImg);
