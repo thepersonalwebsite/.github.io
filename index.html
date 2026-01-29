@@ -52,16 +52,9 @@
       font-size: 22px; margin-bottom: 10px; border-bottom: 1px solid var(--border);
       padding-bottom: 10px; white-space: nowrap;
     }
-    .left .subtitle { font-style: italic; font-size: 16px; margin-bottom: 14px; }
+    .left .subtitle { font-style: italic; font-size: 16px; margin-bottom: 60px; }
 
-    .intro {
-      margin: 0 0 20px 0;
-      line-height: 1.5;
-      font-size: 16px;
-      color: var(--ink);
-      opacity: 0.92;
-    }
-
+    /* Dotted underline (Safari/iOS friendly) */
     .nav-item {
       display: block;
       font-size: 16px;
@@ -84,38 +77,15 @@
     }
     .photo-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-    /* Lightbox */
-    .lightbox {
-      position: fixed; inset: 0; background: var(--overlay);
-      display: none; align-items: center; justify-content: center; z-index: 9999;
-    }
-    .lightbox[aria-hidden="false"] { display: flex; }
-    .lightbox__wrap { position: relative; max-width: 92vw; max-height: 92vh; outline: none; }
-    .lightbox__img { max-width: 92vw; max-height: 92vh; display: block; margin: 0 auto; border: 1px solid #444; background:#111; }
-    .lightbox__close, .lightbox__prev, .lightbox__next {
-      position: absolute; top: 50%; transform: translateY(-50%);
-      border: 1px solid #888; background: rgba(255,255,255,0.08); color: #fff;
-      padding: 10px 14px; font-size: 18px; cursor: pointer; user-select: none; backdrop-filter: blur(2px);
-    }
-    .lightbox__close { top: 8px; right: 8px; transform: none; border-radius: 6px; }
-    .lightbox__prev { left: -54px; border-radius: 8px; }
-    .lightbox__next { right: -54px; border-radius: 8px; }
-    .lightbox__caption { text-align: center; color: #ddd; margin-top: 10px; font-size: 14px; }
-    .lightbox__counter { position: absolute; bottom: -26px; right: 0; color:#bbb; font-size: 12px; }
-
     @media (max-width: 740px) {
       body { align-items: flex-start; min-height: 100dvh; }
       .container { width: 100%; max-width: 600px; padding: 24px; gap: 24px; flex-direction: column; }
       .left, .right { width: 100%; }
       .left h1 { font-size: 20px; margin-bottom: 8px; padding-bottom: 8px; }
-      .left .subtitle { font-size: 15px; margin-bottom: 10px; }
+      .left .subtitle { font-size: 15px; margin-bottom: 28px; }
       .nav-item { font-size: 16px; margin-bottom: 10px; }
       .photo-frame { width: 100%; height: auto; aspect-ratio: 7 / 9; font-size: 13px; }
-      .lightbox__prev { left: 4px; }
-      .lightbox__next { right: 4px; }
     }
-
-    .lightbox__close:focus, .lightbox__prev:focus, .lightbox__next:focus { outline: 2px solid #fff; outline-offset: 2px; }
   </style>
 </head>
 <body>
@@ -124,14 +94,11 @@
       <h1>Joshua Mark Daniels</h1>
       <div class="subtitle">Harvard student chasing meaningful impact.</div>
 
-      <p class="intro">
-        I’m Joshua Mark Daniels, a student at Harvard College interested in economics and building practical tools.
-        This site is a simple record of my work and background—updated over time.
-      </p>
-
+      <!-- Link order: Home, Work, Contact, Heritage -->
+      <a class="nav-item" href="index.html">Home</a>
       <a class="nav-item" href="work.html">Work</a>
-      <a class="nav-item" href="heritage.html">Heritage</a>
       <a class="nav-item" href="mailto:joshuadaniels@college.harvard.edu">Contact</a>
+      <a class="nav-item" href="heritage.html">Heritage</a>
     </div>
 
     <div class="right">
@@ -140,88 +107,5 @@
       </figure>
     </div>
   </div>
-
-  <!-- Lightbox / Image Viewer (optional; kept from your original) -->
-  <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Image viewer">
-    <div class="lightbox__wrap" tabindex="-1">
-      <img id="lightboxImg" class="lightbox__img" alt="">
-      <div class="lightbox__caption" id="lightboxCaption"></div>
-      <div class="lightbox__counter" id="lightboxCounter"></div>
-      <button class="lightbox__close" id="lightboxClose" aria-label="Close (Esc)">✕</button>
-      <button class="lightbox__prev" id="lightboxPrev" aria-label="Previous image">◀</button>
-      <button class="lightbox__next" id="lightboxNext" aria-label="Next image">▶</button>
-    </div>
-  </div>
-
-  <script>
-    // Optional gallery; you can remove this whole script + lightbox if you don't want it on the homepage.
-    const GALLERY = [
-      { src: "media/photo1.jpg", alt: "Awkward Smile", caption: "Awkward Smile" },
-      { src: "media/photo2.jpg", alt: "Common Room", caption: "Common Room" },
-      { src: "media/photo3.jpg", alt: "Out of Focus", caption: "Out of Focus" }
-    ];
-
-    const els = {
-      root: document.getElementById('lightbox'),
-      wrap: document.querySelector('.lightbox__wrap'),
-      img: document.getElementById('lightboxImg'),
-      caption: document.getElementById('lightboxCaption'),
-      counter: document.getElementById('lightboxCounter'),
-      close: document.getElementById('lightboxClose'),
-      prev: document.getElementById('lightboxPrev'),
-      next: document.getElementById('lightboxNext')
-    };
-
-    let index = 0;
-    let lastActive = null;
-
-    function clamp(i) {
-      const n = GALLERY.length;
-      return ((i % n) + n) % n;
-    }
-
-    function show(i) {
-      if (!GALLERY.length) return;
-      index = clamp(i);
-      const { src, alt, caption } = GALLERY[index];
-      els.img.src = src;
-      els.img.alt = alt || "";
-      els.caption.textContent = caption || "";
-      els.counter.textContent = `${index + 1} / ${GALLERY.length}`;
-    }
-
-    function clearHash() {
-      if (location.hash && location.hash.startsWith('#media-')) {
-        history.replaceState(null, '', location.pathname + location.search);
-      }
-    }
-
-    function closeLightbox() {
-      els.root.setAttribute('aria-hidden', 'true');
-      els.img.removeAttribute('src');
-      document.body.style.overflow = '';
-      clearHash();
-      if (lastActive && typeof lastActive.focus === 'function') lastActive.focus();
-    }
-
-    function nextImg() { show(index + 1); }
-    function prevImg() { show(index - 1); }
-
-    els.close.addEventListener('click', closeLightbox);
-    els.next.addEventListener('click', nextImg);
-    els.prev.addEventListener('click', prevImg);
-
-    els.root.addEventListener('click', (e) => {
-      const clickedOutside = !e.target.closest('.lightbox__wrap');
-      if (clickedOutside) closeLightbox();
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (els.root.getAttribute('aria-hidden') === 'true') return;
-      if (e.key === 'Escape') { e.preventDefault(); closeLightbox(); }
-      else if (e.key === 'ArrowRight') { e.preventDefault(); nextImg(); }
-      else if (e.key === 'ArrowLeft') { e.preventDefault(); prevImg(); }
-    });
-  </script>
 </body>
 </html>
