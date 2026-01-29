@@ -1,0 +1,180 @@
+<!-- work.html (NEW FILE) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Work — Joshua Mark Daniels</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="canonical" href="https://www.joshuadaniels.com/work.html" />
+  <meta name="description" content="Work by Joshua Mark Daniels — selected projects and accomplishments." />
+
+  <style>
+    :root {
+      --border:#000; --ink:#000; --muted:#333; --back:#fff; --shade:#ddd;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      margin: 0; background: var(--back); color: var(--ink);
+      display: flex; justify-content: center; align-items: center;
+      min-height: 100vh; padding: 16px;
+    }
+    .container {
+      width: 650px; padding: 40px; border: 1px solid var(--border);
+      display: flex; gap: 40px; background: var(--back);
+    }
+    .left { width: 400px; }
+    .left h1 {
+      font-size: 22px; margin-bottom: 10px; border-bottom: 1px solid var(--border);
+      padding-bottom: 10px; white-space: nowrap;
+    }
+    .left .subtitle { font-style: italic; font-size: 16px; margin-bottom: 16px; }
+
+    .nav-item {
+      display: inline-block;
+      font-size: 16px;
+      margin-right: 14px;
+      margin-bottom: 18px;
+      color: var(--ink);
+      opacity: 0.85;
+      text-decoration-line: underline;
+      text-decoration-style: dotted;
+      text-underline-offset: 2px;
+    }
+    .nav-item:hover { text-decoration-style: solid; }
+
+    .content-title { font-size: 16px; margin: 0 0 10px 0; font-style: italic; }
+    ul.work-list { margin: 0; padding-left: 18px; }
+    ul.work-list li { margin-bottom: 10px; line-height: 1.35; }
+
+    .right { width: 400px; display: flex; justify-content: center; align-items: center; }
+
+    .carousel {
+      width: 280px; height: 360px;
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+      background: var(--shade);
+    }
+    .carousel img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: none;
+    }
+    .carousel img.active { display: block; }
+
+    .car-btn {
+      position: absolute;
+      bottom: 10px;
+      border: 1px solid #000;
+      background: rgba(255,255,255,0.75);
+      padding: 6px 10px;
+      cursor: pointer;
+      font-size: 14px;
+      user-select: none;
+    }
+    .car-prev { left: 10px; }
+    .car-next { right: 10px; }
+
+    .dots {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 6px;
+      background: rgba(255,255,255,0.75);
+      border: 1px solid #000;
+      padding: 4px 8px;
+    }
+    .dot {
+      width: 7px; height: 7px;
+      border: 1px solid #000;
+      border-radius: 50%;
+      background: transparent;
+      cursor: pointer;
+    }
+    .dot.active { background: #000; }
+
+    @media (max-width: 740px) {
+      body { align-items: flex-start; min-height: 100dvh; }
+      .container {
+        width: 100%; max-width: 600px; padding: 24px; gap: 24px;
+        flex-direction: column;
+      }
+      .left, .right { width: 100%; }
+      .left h1 { font-size: 20px; margin-bottom: 8px; padding-bottom: 8px; }
+      .left .subtitle { font-size: 15px; margin-bottom: 14px; }
+      .carousel { width: 100%; height: auto; aspect-ratio: 7 / 9; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="left">
+      <h1>Work</h1>
+      <div class="subtitle">Selected projects and accomplishments.</div>
+
+      <nav aria-label="Primary">
+        <a class="nav-item" href="index.html">Home</a>
+        <a class="nav-item" href="heritage.html">Heritage</a>
+        <a class="nav-item" href="mailto:joshuadaniels@college.harvard.edu">Contact</a>
+      </nav>
+
+      <p class="content-title">Highlights</p>
+      <ul class="work-list">
+        <li><strong>[Project / Role]</strong> — one sentence describing impact/results.</li>
+        <li><strong>[Project / Role]</strong> — one sentence describing what you built or learned.</li>
+        <li><strong>[Project / Role]</strong> — one sentence, ideally with a measurable outcome.</li>
+        <li><strong>[Project / Role]</strong> — one sentence (keep it concrete).</li>
+        <li><strong>[Project / Role]</strong> — one sentence (optional).</li>
+      </ul>
+    </div>
+
+    <div class="right">
+      <div class="carousel" aria-label="Work image carousel">
+        <!-- Five placeholder images -->
+        <img src="media/work1.jpg" alt="Work image 1" class="active">
+        <img src="media/work2.jpg" alt="Work image 2">
+        <img src="media/work3.jpg" alt="Work image 3">
+        <img src="media/work4.jpg" alt="Work image 4">
+        <img src="media/work5.jpg" alt="Work image 5">
+
+        <button class="car-btn car-prev" type="button" aria-label="Previous image">◀</button>
+        <button class="car-btn car-next" type="button" aria-label="Next image">▶</button>
+
+        <div class="dots" aria-label="Carousel position">
+          <button class="dot active" type="button" aria-label="Go to image 1"></button>
+          <button class="dot" type="button" aria-label="Go to image 2"></button>
+          <button class="dot" type="button" aria-label="Go to image 3"></button>
+          <button class="dot" type="button" aria-label="Go to image 4"></button>
+          <button class="dot" type="button" aria-label="Go to image 5"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const imgs = Array.from(document.querySelectorAll('.carousel img'));
+    const prev = document.querySelector('.car-prev');
+    const next = document.querySelector('.car-next');
+    const dots = Array.from(document.querySelectorAll('.dot'));
+    let i = 0;
+
+    function render() {
+      imgs.forEach((img, idx) => img.classList.toggle('active', idx === i));
+      dots.forEach((d, idx) => d.classList.toggle('active', idx === i));
+    }
+
+    function go(n) {
+      i = (n + imgs.length) % imgs.length;
+      render();
+    }
+
+    prev.addEventListener('click', () => go(i - 1));
+    next.addEventListener('click', () => go(i + 1));
+    dots.forEach((d, idx) => d.addEventListener('click', () => go(idx)));
+  </script>
+</body>
+</html>
