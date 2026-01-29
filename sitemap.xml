@@ -1,6 +1,7 @@
+<!-- sitemap.xml (REPLACE YOUR WHOLE FILE WITH THIS) -->
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://www.joshuadaniels.com/</loc>
-  </url>
+  <url><loc>https://www.joshuadaniels.com/</loc></url>
+  <url><loc>https://www.joshuadaniels.com/work.html</loc></url>
+  <url><loc>https://www.joshuadaniels.com/heritage.html</loc></url>
 </urlset>
