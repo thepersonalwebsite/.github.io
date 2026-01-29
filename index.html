@@ -1,3 +1,4 @@
+<!-- index.html (REPLACE YOUR WHOLE FILE WITH THIS) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,19 +7,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <link rel="canonical" href="https://www.joshuadaniels.com/" />
-  <meta name="description" content="Joshua Mark Daniels — student at Harvard College interested in economics, applied math, statistics, physics, computer science, as well as polo, rowing, chess, and politics. Curriculum vitae, media, and contact information.">
+  <meta name="description" content="Joshua Mark Daniels — student at Harvard College interested in economics, applied math, statistics, physics, computer science, as well as polo, rowing, chess, and politics. Work, heritage, and contact information.">
 
   <!-- Social preview -->
   <meta property="og:title" content="Joshua Mark Daniels">
   <meta property="og:description" content="Student at Harvard College interested in economics, applied math, statistics, physics, and computer science.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://www.joshuadaniels.com/">
-  <!-- <meta property="og:image" content="https://www.joshuadaniels.com/media/headshot.jpg"> -->
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Joshua Mark Daniels">
   <meta name="twitter:description" content="Student at Harvard College interested in economics, applied math, statistics, physics, and computer science.">
-  <!-- <meta name="twitter:image" content="https://www.joshuadaniels.com/media/headshot.jpg"> -->
 
   <!-- JSON-LD -->
   <script type="application/ld+json">
@@ -44,13 +43,25 @@
       display: flex; justify-content: center; align-items: center;
       min-height: 100vh; padding: 16px;
     }
-    .container { width: 650px; padding: 40px; border: 1px solid var(--border);
-      display: flex; gap: 40px; background: var(--back); }
+    .container {
+      width: 650px; padding: 40px; border: 1px solid var(--border);
+      display: flex; gap: 40px; background: var(--back);
+    }
     .left { width: 400px; }
-    .left h1 { font-size: 22px; margin-bottom: 10px; border-bottom: 1px solid var(--border); padding-bottom: 10px; white-space: nowrap; }
-    .left .subtitle { font-style: italic; font-size: 16px; margin-bottom: 60px; }
+    .left h1 {
+      font-size: 22px; margin-bottom: 10px; border-bottom: 1px solid var(--border);
+      padding-bottom: 10px; white-space: nowrap;
+    }
+    .left .subtitle { font-style: italic; font-size: 16px; margin-bottom: 14px; }
 
-    /* Make dotted underlines render reliably on iPhone */
+    .intro {
+      margin: 0 0 20px 0;
+      line-height: 1.5;
+      font-size: 16px;
+      color: var(--ink);
+      opacity: 0.92;
+    }
+
     .nav-item {
       display: block;
       font-size: 16px;
@@ -58,20 +69,18 @@
       color: var(--ink);
       opacity: 0.85;
 
-      /* Explicit underline pieces (Safari/iOS friendly) */
       text-decoration-line: underline;
       text-decoration-style: dotted;
       text-decoration-color: currentColor;
       text-underline-offset: 2px;
     }
     .nav-item:hover { text-decoration-style: solid; }
-    .nav-item[aria-disabled="true"] { cursor: not-allowed; }
 
     .right { width: 400px; display: flex; justify-content: center; align-items: center; }
-    .photo-placeholder, .photo-frame {
+    .photo-frame {
       width: 280px; height: 360px; background: var(--shade); border: 1px solid var(--border);
       display: flex; justify-content: center; align-items: center; font-size: 14px; font-style: italic; color: var(--muted); overflow: hidden;
-      margin: 0; /* keep headshot aligned exactly where the placeholder was */
+      margin: 0;
     }
     .photo-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
@@ -99,14 +108,13 @@
       .container { width: 100%; max-width: 600px; padding: 24px; gap: 24px; flex-direction: column; }
       .left, .right { width: 100%; }
       .left h1 { font-size: 20px; margin-bottom: 8px; padding-bottom: 8px; }
-      .left .subtitle { font-size: 15px; margin-bottom: 28px; }
+      .left .subtitle { font-size: 15px; margin-bottom: 10px; }
       .nav-item { font-size: 16px; margin-bottom: 10px; }
-      .photo-placeholder, .photo-frame { width: 100%; height: auto; aspect-ratio: 7 / 9; font-size: 13px; }
+      .photo-frame { width: 100%; height: auto; aspect-ratio: 7 / 9; font-size: 13px; }
       .lightbox__prev { left: 4px; }
       .lightbox__next { right: 4px; }
     }
 
-    /* Focus styles for lightbox controls */
     .lightbox__close:focus, .lightbox__prev:focus, .lightbox__next:focus { outline: 2px solid #fff; outline-offset: 2px; }
   </style>
 </head>
@@ -116,12 +124,14 @@
       <h1>Joshua Mark Daniels</h1>
       <div class="subtitle">Harvard student chasing meaningful impact.</div>
 
-      <!-- Keep these disabled until pages exist -->
-      <span class="nav-item" role="link" aria-disabled="true" tabindex="-1">Curriculum Vitae</span>
-      <span class="nav-item" role="link" aria-disabled="true" tabindex="-1">Contact</span>
+      <p class="intro">
+        I’m Joshua Mark Daniels, a student at Harvard College interested in economics and building practical tools.
+        This site is a simple record of my work and background—updated over time.
+      </p>
 
-      <!-- Media uses an anchor for best underline support on iPhone -->
-      <span class="nav-item" role="link" aria-disabled="true" tabindex="-1">Media</span>
+      <a class="nav-item" href="work.html">Work</a>
+      <a class="nav-item" href="heritage.html">Heritage</a>
+      <a class="nav-item" href="mailto:joshuadaniels@college.harvard.edu">Contact</a>
     </div>
 
     <div class="right">
@@ -131,7 +141,7 @@
     </div>
   </div>
 
-  <!-- Lightbox / Image Viewer -->
+  <!-- Lightbox / Image Viewer (optional; kept from your original) -->
   <div id="lightbox" class="lightbox" role="dialog" aria-modal="true" aria-hidden="true" aria-label="Image viewer">
     <div class="lightbox__wrap" tabindex="-1">
       <img id="lightboxImg" class="lightbox__img" alt="">
@@ -139,24 +149,19 @@
       <div class="lightbox__counter" id="lightboxCounter"></div>
       <button class="lightbox__close" id="lightboxClose" aria-label="Close (Esc)">✕</button>
       <button class="lightbox__prev" id="lightboxPrev" aria-label="Previous image">◀</button>
-      <button class="lightbox__next" id="lightboxNext" aria-label="Next image">▶</button> 
+      <button class="lightbox__next" id="lightboxNext" aria-label="Next image">▶</button>
     </div>
   </div>
 
   <script>
-    // GALLERY: put files in /media and list them here
+    // Optional gallery; you can remove this whole script + lightbox if you don't want it on the homepage.
     const GALLERY = [
       { src: "media/photo1.jpg", alt: "Awkward Smile", caption: "Awkward Smile" },
       { src: "media/photo2.jpg", alt: "Common Room", caption: "Common Room" },
-      { src: "media/photo3.jpg", alt: "Out of Focus", caption: "Out of Focus" },
-      /* { src: "media/photo4.jpg", alt: "Polo", caption: "Polo" },
-         { src: "media/photo5.jpg", alt: "Rowing", caption: "Rowing" },
-         { src: "media/photo6.jpg", alt: "Golf", caption: "Golf" } */
+      { src: "media/photo3.jpg", alt: "Out of Focus", caption: "Out of Focus" }
     ];
 
-    // --- Lightbox logic (no dependencies) ---
     const els = {
-      
       root: document.getElementById('lightbox'),
       wrap: document.querySelector('.lightbox__wrap'),
       img: document.getElementById('lightboxImg'),
@@ -185,21 +190,6 @@
       els.counter.textContent = `${index + 1} / ${GALLERY.length}`;
     }
 
-    function openLightbox(startIndex = 0) {
-      if (!GALLERY.length) {
-        alert("No photos yet. Add images to the GALLERY array in the HTML.");
-        return;
-      }
-      lastActive = document.activeElement;
-      els.root.setAttribute('aria-hidden', 'false');
-      show(startIndex);
-      // Preload neighbors
-      const next = new Image(); next.src = GALLERY[clamp(startIndex+1)].src;
-      const prev = new Image(); prev.src = GALLERY[clamp(startIndex-1)].src;
-      els.wrap.focus();
-      document.body.style.overflow = 'hidden';
-    }
-
     function clearHash() {
       if (location.hash && location.hash.startsWith('#media-')) {
         history.replaceState(null, '', location.pathname + location.search);
@@ -217,43 +207,21 @@
     function nextImg() { show(index + 1); }
     function prevImg() { show(index - 1); }
 
-    // Click handlers
-    document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
-    document.getElementById('lightboxNext').addEventListener('click', nextImg);
-    document.getElementById('lightboxPrev').addEventListener('click', prevImg);
+    els.close.addEventListener('click', closeLightbox);
+    els.next.addEventListener('click', nextImg);
+    els.prev.addEventListener('click', prevImg);
 
-    // Click outside image closes
     els.root.addEventListener('click', (e) => {
       const clickedOutside = !e.target.closest('.lightbox__wrap');
       if (clickedOutside) closeLightbox();
     });
 
-    // Keyboard support
-    function onKey(e) {
+    document.addEventListener('keydown', (e) => {
       if (els.root.getAttribute('aria-hidden') === 'true') return;
       if (e.key === 'Escape') { e.preventDefault(); closeLightbox(); }
       else if (e.key === 'ArrowRight') { e.preventDefault(); nextImg(); }
       else if (e.key === 'ArrowLeft') { e.preventDefault(); prevImg(); }
-    }
-    document.addEventListener('keydown', onKey);
-
-    // Basic swipe for touch
-    let startX = null;
-    els.wrap.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; }, {passive:true});
-    els.wrap.addEventListener('touchend', (e) => {
-      if (startX === null) return;
-      const dx = e.changedTouches[0].clientX - startX;
-      if (Math.abs(dx) > 40) (dx < 0 ? nextImg : prevImg)();
-      startX = null;
     });
-
-    // Open if URL already has #media-N
-    function openFromHash() {
-      const m = location.hash.match(/^#media-(\d+)$/);
-      if (m) openLightbox(parseInt(m[1],10)-1);
-    }
-    window.addEventListener('hashchange', openFromHash);
-    document.addEventListener('DOMContentLoaded', openFromHash);
   </script>
 </body>
 </html>
