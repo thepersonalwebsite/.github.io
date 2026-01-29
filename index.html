@@ -1,4 +1,4 @@
-<!-- index.html (REPLACE YOUR WHOLE FILE WITH THIS) -->
+<!-- index.html (HOME LINK REMOVED ON HOME PAGE; REPLACE YOUR WHOLE FILE WITH THIS) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -34,7 +34,6 @@
   <style>
     :root {
       --border:#000; --ink:#000; --muted:#333; --back:#fff; --shade:#ddd;
-      --overlay: rgba(0,0,0,0.85);
     }
     * { box-sizing: border-box; }
     body {
@@ -54,14 +53,12 @@
     }
     .left .subtitle { font-style: italic; font-size: 16px; margin-bottom: 60px; }
 
-    /* Dotted underline (Safari/iOS friendly) */
     .nav-item {
       display: block;
       font-size: 16px;
       margin-bottom: 12px;
       color: var(--ink);
       opacity: 0.85;
-
       text-decoration-line: underline;
       text-decoration-style: dotted;
       text-decoration-color: currentColor;
@@ -94,8 +91,7 @@
       <h1>Joshua Mark Daniels</h1>
       <div class="subtitle">Harvard student chasing meaningful impact.</div>
 
-      <!-- Link order: Home, Work, Contact, Heritage -->
-      <a class="nav-item" href="index.html">Home</a>
+      <!-- Link order on HOME (no Home link): Work, Contact, Heritage -->
       <a class="nav-item" href="work.html">Work</a>
       <a class="nav-item" href="mailto:joshuadaniels@college.harvard.edu">Contact</a>
       <a class="nav-item" href="heritage.html">Heritage</a>
