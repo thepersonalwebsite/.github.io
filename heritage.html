@@ -1,0 +1,74 @@
+<!-- heritage.html (NEW FILE) -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Heritage — Joshua Mark Daniels</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="canonical" href="https://www.joshuadaniels.com/heritage.html" />
+  <meta name="description" content="Heritage — an abridged personal note by Joshua Mark Daniels." />
+
+  <style>
+    :root { --border:#000; --ink:#000; --back:#fff; }
+    * { box-sizing: border-box; }
+    body {
+      font-family: Georgia, "Times New Roman", serif;
+      margin: 0; background: var(--back); color: var(--ink);
+      display: flex; justify-content: center; align-items: center;
+      min-height: 100vh; padding: 16px;
+    }
+    .container {
+      width: 650px; padding: 40px; border: 1px solid var(--border);
+      background: var(--back);
+    }
+    h1 {
+      font-size: 22px; margin: 0 0 10px 0;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 10px;
+      white-space: nowrap;
+    }
+    .subtitle { font-style: italic; font-size: 16px; margin: 10px 0 18px 0; }
+
+    .nav-item {
+      display: inline-block;
+      font-size: 16px;
+      margin-right: 14px;
+      margin-bottom: 18px;
+      color: var(--ink);
+      opacity: 0.85;
+      text-decoration-line: underline;
+      text-decoration-style: dotted;
+      text-underline-offset: 2px;
+    }
+    .nav-item:hover { text-decoration-style: solid; }
+
+    .prose { line-height: 1.5; font-size: 16px; }
+    .prose p { margin: 0 0 14px 0; }
+
+    @media (max-width: 740px) {
+      body { align-items: flex-start; min-height: 100dvh; }
+      .container { width: 100%; max-width: 600px; padding: 24px; }
+      h1 { font-size: 20px; }
+      .subtitle { font-size: 15px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Heritage</h1>
+    <div class="subtitle">An abridged note.</div>
+
+    <nav aria-label="Primary">
+      <a class="nav-item" href="index.html">Home</a>
+      <a class="nav-item" href="work.html">Work</a>
+      <a class="nav-item" href="mailto:joshuadaniels@college.harvard.edu">Contact</a>
+    </nav>
+
+    <div class="prose">
+      <p>[Write 150–300 words here. This matters for indexing.]</p>
+      <p>[Second paragraph. Keep it specific and original.]</p>
+    </div>
+  </div>
+</body>
+</html>
