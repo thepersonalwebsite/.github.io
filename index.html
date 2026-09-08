@@ -1,113 +1,41 @@
-<!-- index.html (HOME LINK REMOVED ON HOME PAGE; REPLACE YOUR WHOLE FILE WITH THIS) -->
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <title>Joshua Mark Daniels</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>NEVER GIVE UP.</title>
+    <meta name="description" content="NEVER GIVE UP.">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="icon" href="/favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <style>
+      html,
+      body {
+        margin: 0;
+        min-height: 100%;
+        background: #fff;
+      }
 
-  <link rel="canonical" href="https://www.joshuadaniels.com/" />
-  <meta name="description" content="Joshua Mark Daniels — Harvard College student studying mathamatics and classics. 6k+ page visits.">
+      body {
+        display: grid;
+        min-height: 100vh;
+        place-items: center;
+      }
 
-  <!-- Social preview -->
-  <meta property="og:title" content="Joshua Mark Daniels">
-  <meta property="og:description" content="Student at Harvard College interested in economics, applied math, statistics, physics, and computer science.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://www.joshuadaniels.com/">
-
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Joshua Mark Daniels">
-  <meta name="twitter:description" content="Student at Harvard College interested in economics, applied math, statistics, physics, and computer science.">
-  <!-- Favicons -->
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-  <link rel="icon" href="/favicon.ico" sizes="any">
-  <link rel="manifest" href="/site.webmanifest">
-
-  <!-- JSON-LD -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Joshua Mark Daniels",
-    "affiliation": { "@type": "CollegeOrUniversity", "name": "Harvard University" },
-    "url": "https://www.joshuadaniels.com/",
-    "sameAs": ["https://www.instagram.com/realjoshuadaniels/"]
-  }
-  </script>
-
-  <style>
-    :root {
-      --border:#000; --ink:#000; --muted:#333; --back:#fff; --shade:#ddd;
-    }
-    * { box-sizing: border-box; }
-    body {
-      font-family: Georgia, "Times New Roman", serif;
-      margin: 0; background: var(--back); color: var(--ink);
-      display: flex; justify-content: center; align-items: center;
-      min-height: 100vh; padding: 16px;
-    }
-    .container {
-      width: 650px; padding: 40px; border: 1px solid var(--border);
-      display: flex; gap: 40px; background: var(--back);
-    }
-    .left { width: 400px; }
-    .left h1 {
-      font-size: 22px; margin-bottom: 10px; border-bottom: 1px solid var(--border);
-      padding-bottom: 10px; white-space: nowrap;
-    }
-    .left .subtitle { font-style: italic; font-size: 16px; margin-bottom: 60px; }
-
-    .nav-item {
-      display: block;
-      font-size: 16px;
-      margin-bottom: 12px;
-      color: var(--ink);
-      opacity: 0.85;
-      text-decoration-line: underline;
-      text-decoration-style: dotted;
-      text-decoration-color: currentColor;
-      text-underline-offset: 2px;
-    }
-    .nav-item:hover { text-decoration-style: solid; }
-
-    .right { width: 400px; display: flex; justify-content: center; align-items: center; }
-    .photo-frame {
-      width: 280px; height: 360px; background: var(--shade); border: 1px solid var(--border);
-      display: flex; justify-content: center; align-items: center; font-size: 14px; font-style: italic; color: var(--muted); overflow: hidden;
-      margin: 0;
-    }
-    .photo-frame img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-    @media (max-width: 740px) {
-      body { align-items: flex-start; min-height: 100dvh; }
-      .container { width: 100%; max-width: 600px; padding: 24px; gap: 24px; flex-direction: column; }
-      .left, .right { width: 100%; }
-      .left h1 { font-size: 20px; margin-bottom: 8px; padding-bottom: 8px; }
-      .left .subtitle { font-size: 15px; margin-bottom: 28px; }
-      .nav-item { font-size: 16px; margin-bottom: 10px; }
-      .photo-frame { width: 100%; height: auto; aspect-ratio: 7 / 9; font-size: 13px; }
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div class="left">
-      <h1>Joshua Mark Daniels</h1>
-      <div class="subtitle">Veritas Christo et Ecclesiae</div>
-
-      <!-- Link order on HOME (no Home link): Work, Contact, Heritage -->
-      <a class="nav-item" href="work.html">Work</a>
-      <a class="nav-item" href="heritage.html">Heritage</a>
-      <a class="nav-item" href="mailto:joshuadaniels@college.harvard.edu">Contact</a>
-    </div>
-
-    <div class="right">
-      <figure class="photo-frame" aria-label="Professional headshot of Joshua Daniels">
-        <img id="profilePhoto" src="media/headshot.jpg" alt="Joshua Daniels headshot">
-      </figure>
-    </div>
-  </div>
-</body>
+      img {
+        display: block;
+        width: 100vw;
+        height: 100vh;
+        object-fit: contain;
+      }
+    </style>
+  </head>
+  <body>
+    <main aria-label="NEVER GIVE UP.">
+      <img src="/media/never-give-up.png" alt="NEVER GIVE UP. over family seal">
+    </main>
+  </body>
 </html>
