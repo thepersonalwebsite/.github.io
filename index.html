@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>NEVER GIVE UP.</title>
-    <meta name="description" content="NEVER GIVE UP.">
+    <title>Joshua Mark Dewey Daniels</title>
+    <meta name="description" content="Joshua Mark Dewey Daniels — NEVER GIVE UP.">
     <meta name="theme-color" content="#ffffff">
     <link rel="icon" href="/favicon.ico" sizes="any">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
@@ -25,17 +25,33 @@
         place-items: center;
       }
 
-      img {
+      a.plate {
         display: block;
         width: 100vw;
         height: 100vh;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      a.plate:focus-visible {
+        outline: 2px solid #000;
+        outline-offset: -4px;
+      }
+
+      img {
+        display: block;
+        width: 100%;
+        height: 100%;
         object-fit: contain;
       }
     </style>
   </head>
   <body>
     <main aria-label="NEVER GIVE UP.">
-      <img src="/media/never-give-up.png" alt="NEVER GIVE UP. over family seal">
+      <a class="plate"
+         href="https://www.youtube.com/watch?v=ToHhQUhdyBY"
+         aria-label="Watch the Apollo 8 Christmas Eve broadcast">
+        <img src="/media/never-give-up.png" alt="NEVER GIVE UP. over family seal">
+      </a>
     </main>
   </body>
 </html>
